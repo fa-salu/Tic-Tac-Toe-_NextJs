@@ -47,30 +47,47 @@ export default function TicTacToe() {
 
   return (
     <div className="flex flex-col h-screen items-center justify-evenly">
-      <h1 className="text-4xl">Tic Tac Toe</h1>
+      <h1 className="text-4xl font-bold transform hover:translate-y-2 transition-all duration-300">
+        <span className="text-red-500">Tic</span>{" "}
+        <span className="text-green-500">Tac</span>{" "}
+        <span className="text-blue-500">Toe</span>
+      </h1>
+
+      {/* Grid with animation on load */}
       <div className="grid grid-cols-3 gap-5">
         {board.map((box, index) => (
           <button
             key={index}
             onClick={() => handleClick(index)}
-            className="w-24 h-24 text-2xl font-bold border-2 border-gray-900 rounded animate-borderMove"
+            className={`w-24 h-24 text-4xl font-bold border-2 border-gray-900 rounded animate-boxSlideIn flex items-center justify-center`}
+            style={{ animationDelay: `${index * 0.1}s` }}
           >
-            {box}
+            <span
+              className={`transition-all duration-300 ease-in-out ${
+                box === "X"
+                  ? "scale-150 text-red-600 animate-borderMove"
+                  : box === "O"
+                  ? "scale-150 text-green-600 animate-borderMove"
+                  : ""
+              }`}
+            >
+              {box}
+            </span>
           </button>
         ))}
       </div>
 
       {winner && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white text-gray-900 text-4xl md:text-6xl font-bold  border-2 animate-borderMove px-10 py-6 rounded-lg shadow-lg">
-            {winner === "draw" ? "It's a draw!" : `${winner} Wins!`}
+          <div className="bg-white text-gray-900 text-4xl md:text-6xl font-bold border-2 animate-borderMove px-10 py-6 rounded-lg shadow-lg">
+            {winner === "draw" ? "draw!" : `${winner} Wins!`}
           </div>
         </div>
       )}
 
       <button
         onClick={handlePlay}
-        className="text-2xl z-20 text-black p-3 rounded-xl border border-white animate-borderMove bg-gray-100"
+        className="text-2xl z-20 text-black p-3 rounded-xl border border-white animate-borderMove bg-gray-100 shadow-2xl transform active:translate-y-1 hover:scale-105 transition-all duration-300"
       >
         Play Again
       </button>
