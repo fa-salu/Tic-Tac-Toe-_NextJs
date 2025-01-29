@@ -53,7 +53,6 @@ export default function TicTacToe() {
         <span className="text-blue-500">Toe</span>
       </h1>
 
-      {/* Grid with animation on load */}
       <div className="grid grid-cols-3 gap-5">
         {board.map((box, index) => (
           <button
