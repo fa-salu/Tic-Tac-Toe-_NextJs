@@ -7,11 +7,10 @@ export default function Hero() {
       <Image
         src="/images/bg.jpg"
         alt="Background"
-        layout="fill"
-        objectFit="cover"
+        fill
         quality={80}
         priority
-        className="-z-10"
+        className="-z-10 object-cover"
       />
 
       <h1 className="text-4xl sm:text-6xl bg-gray-300 border border-black p-6 sm:p-10 rounded-xl font-extrabold z-10 drop-shadow-[4px_4px_10px_rgba(255,255,255,0.6)]">
